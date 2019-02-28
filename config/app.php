@@ -9,7 +9,7 @@ return [
      * Development Mode:
      * true: Errors and warnings shown.
      */
-    'debug' => false,
+    'debug' => filter_var(env('DEBUG', true), FILTER_VALIDATE_BOOLEAN),
 
     /**
      * Configure basic information about the application.
@@ -68,7 +68,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => getenv('SECURITY_SALT'),
+        'salt' => env('SECURITY_SALT', 'ba0e7e1b9579a3cf0ef16d8feea8baf695278247c7d2bc1efd4950a0e9da9e36'),
     ],
 
     /**
@@ -248,16 +248,16 @@ return [
             'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
-            'host' => getenv('DB_HOST'),
+            'host' => 'dev-homologacao.ctpetlcg3bwb.us-east-1.rds.amazonaws.com',
             /*
              * CakePHP will use the default DB port based on the driver selected
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
              * the following line and set the port accordingly
              */
             'port' => 3306,
-            'username' => getenv('DB_USERNAME'),
-            'password' => getenv('DB_PASSWORD'),
-            'database' => getenv('DB_DATABASE'),
+            'username' => 'teste_estoque',
+            'password' => 'h3t4tgfh',
+            'database' => 'bd_teste_estoque',
             /*
              * You do not need to set this flag to use full utf-8 encoding (internal default since CakePHP 3.6).
              */
