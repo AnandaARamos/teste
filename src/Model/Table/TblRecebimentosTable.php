@@ -64,9 +64,6 @@ class TblRecebimentosTable extends Table
             ->requirePresence('recebimento_numero_nota', 'create')
             ->allowEmptyString('recebimento_numero_nota', false);
 
-        $validator
-            ->allowEmptyString('movimentacao');
-
         return $validator;
     }
 }

@@ -64,9 +64,6 @@ class TblSaidasTable extends Table
             ->requirePresence('saida_numero_nota', 'create')
             ->allowEmptyString('saida_numero_nota', false);
 
-      $validator
-                ->allowEmptyString('movimentacao');
-
         return $validator;
     }
 }
