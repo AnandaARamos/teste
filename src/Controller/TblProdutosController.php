@@ -134,6 +134,7 @@ class TblProdutosController extends AppController
                     $movimentacoes = (($saidas->append($recebimentos))->append($ajustes_entradas))->append($ajustes_saidas);
                     $movimentacoes = $movimentacoes->sortBy('data_hora_movimentacao');
 
+
                     $produto = [
                         'codigo' => $id,
                         'descricao' => $produto->produto_descricao,
