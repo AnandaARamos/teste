@@ -84,7 +84,7 @@ class TblProdutosController extends AppController
      * @param $id
      * @return array|\Cake\Datasource\EntityInterface|null
      */
-    public function rastreamentoProduto($id)
+    public function rastreamentoProduto($id = null)
     {
         $this->autoRender = false;
         if ($this->request->is('get'))
@@ -133,7 +133,6 @@ class TblProdutosController extends AppController
 
                     $movimentacoes = (($saidas->append($recebimentos))->append($ajustes_entradas))->append($ajustes_saidas);
                     $movimentacoes = $movimentacoes->sortBy('data_hora_movimentacao');
-
 
                     $produto = [
                         'codigo' => $id,
