@@ -122,7 +122,7 @@ class TblProdutosController extends AppController
                     $ajustes_saidas = $this->TblAjustesEstoque
                         ->find('all')
                         ->where(['produto_id' => $id, 'ajuste_tipo' => "S"])
-                        ->select(['codigo_movimentacao' => 'ajuste_id', 
+                        ->select(['codigo_movimentacao' => 'ajuste_id',
                             'data_hora_movimentacao' => 'ajuste_datahora', 'quantidade_movimentada' => 'ajuste_quantidade']);
 
 
