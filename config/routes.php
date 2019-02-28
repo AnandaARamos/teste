@@ -54,16 +54,18 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks('InflectedRoute');
     $routes->fallbacks('DashedRoute');
     Router::extensions(['json', 'xml']);
-    $routes->connect('/tbl_produtos/saldo_estoque', ['controller' => 'TblProdutos', 'action' => 'saldo_estoque', 'isRest' => true]);
-    $routes->connect ( '/saldo_estoque', [
-        'controller' => 'TblProdutos',
-        'action' => 'saldoEstoque'
-    ] );
+//    $routes->connect('/tbl_produtos/saldo_estoque', ['controller' => 'TblProdutos', 'action' => 'saldo_estoque', 'isRest' => true]);
+//    $routes->connect ( '/saldo_estoque', [
+//        'controller' => 'TblProdutos',
+//        'action' => 'saldoEstoque'
+//    ] );
+//
+//    $routes->connect ( '/rastreamento_produto/*', [
+//        'controller' => 'TblProdutos',
+//        'action' => 'rastreamentoProduto',
+//    ] ) ->setPass(['id', 'slug']);
 
-    $routes->connect ( '/rastreamento_produto/*', [
-        'controller' => 'TblProdutos',
-        'action' => 'rastreamentoProduto',
-    ] ) ->setPass(['id', 'slug']);
+    $routes->connect('/', ['controller' => 'Funcoes', 'action' => 'index']);
 
     /**
      * Apply a middleware to the current route scope.
