@@ -127,17 +127,30 @@ class TblProdutosController extends AppController
 
 
                     $saidas = new Collection($saidas);
+                    $saidas = $saidas->each(function($saida){
+                        $saida['movimentacao'] = 'saida';
+                    });
                     $recebimentos = new Collection($recebimentos);
+                    $recebimentos = $recebimentos->each(function($recebimento){
+                        $recebimento['movimentacao'] = 'recebimento';
+                    });
                     $ajustes_entradas = new Collection($ajustes_entradas);
+                    $ajustes_entradas = $saidas->each(function($ajuste_entrada){
+                        $ajuste_entrada['movimentacao'] = 'recebimento';
+                    });
                     $ajustes_saidas = new Collection($ajustes_saidas);
+                    $ajustes_saidas = $saidas->each(function($ajuste_saida){
+                        $ajuste_saida['movimentacao'] = 'saida';
+                    });
 
                     $movimentacoes = (($saidas->append($recebimentos))->append($ajustes_entradas))->append($ajustes_saidas);
                     $movimentacoes = $movimentacoes->sortBy('data_hora_movimentacao');
 
+
                     $produto = [
                         'codigo' => $id,
                         'descricao' => $produto->produto_descricao,
-                        'movimentacoes' => $movimentacoes->toList()
+                        'movimentacoes' => $saidas->toList() //$movimentacoes->toList()
                     ];
                     $resultJ = json_encode($produto);
                     $this->response->type('json');
