@@ -150,7 +150,7 @@ class TblProdutosController extends AppController
                     $produto = [
                         'codigo' => $id,
                         'descricao' => $produto->produto_descricao,
-                        'movimentacoes' => $saidas->toList() //$movimentacoes->toList()
+                        'movimentacoes' => $movimentacoes->toList() 
                     ];
                     $resultJ = json_encode($produto);
                     $this->response->type('json');
