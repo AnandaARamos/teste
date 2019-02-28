@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * TblSaidas Model
  *
+ * @property \Cake\ORM\Association\HasMany $TblSaidasProdutos
+ *
  * @method \App\Model\Entity\TblSaida get($primaryKey, $options = [])
  * @method \App\Model\Entity\TblSaida newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\TblSaida[] newEntities(array $data, array $options = [])
@@ -34,6 +36,10 @@ class TblSaidasTable extends Table
         $this->setTable('tbl_saidas');
         $this->setDisplayField('saida_id');
         $this->setPrimaryKey('saida_id');
+
+        $this->hasMany('TblSaidasProdutos', [
+            'foreignKey' => 'saida_id'
+        ]);
     }
 
     /**

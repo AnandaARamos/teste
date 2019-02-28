@@ -56,7 +56,7 @@ class TblAjustesEstoqueFixture extends TestFixture
             [
                 'ajuste_id' => 1,
                 'ajuste_tipo' => 'Lorem ipsum dolor sit amet',
-                'ajuste_datahora' => '2019-02-28 01:19:48',
+                'ajuste_datahora' => '2019-02-28 08:23:09',
                 'ajuste_motivo' => 'Lorem ipsum dolor sit amet',
                 'produto_id' => 1,
                 'ajuste_quantidade' => 1

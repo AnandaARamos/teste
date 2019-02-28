@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * TblRecebimentos Model
  *
+ * @property \Cake\ORM\Association\HasMany $TblRecebimentosProdutos
+ *
  * @method \App\Model\Entity\TblRecebimento get($primaryKey, $options = [])
  * @method \App\Model\Entity\TblRecebimento newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\TblRecebimento[] newEntities(array $data, array $options = [])
@@ -34,6 +36,10 @@ class TblRecebimentosTable extends Table
         $this->setTable('tbl_recebimentos');
         $this->setDisplayField('recebimento_id');
         $this->setPrimaryKey('recebimento_id');
+
+        $this->hasMany('TblRecebimentosProdutos', [
+            'foreignKey' => 'recebimento_id'
+        ]);
     }
 
     /**

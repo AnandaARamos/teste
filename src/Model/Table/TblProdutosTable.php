@@ -9,6 +9,11 @@ use Cake\Validation\Validator;
 /**
  * TblProdutos Model
  *
+ * @property \Cake\ORM\Association\HasMany $TblRecebimentosProdutos
+ * @property \Cake\ORM\Association\HasMany $TblSaidasProdutos
+ * @property \Cake\ORM\Association\HasMany $TblAjustesEstoque
+ *
+ *
  * @method \App\Model\Entity\TblProduto get($primaryKey, $options = [])
  * @method \App\Model\Entity\TblProduto newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\TblProduto[] newEntities(array $data, array $options = [])
@@ -34,6 +39,16 @@ class TblProdutosTable extends Table
         $this->setTable('tbl_produtos');
         $this->setDisplayField('produto_id');
         $this->setPrimaryKey('produto_id');
+
+        $this->hasMany('TblRecebimentosProdutos', [
+            'foreignKey' => 'produto_id'
+        ]);
+        $this->hasMany('TblSaidasProdutos', [
+            'foreignKey' => 'produto_id'
+        ]);
+        $this->hasMany('TblAjustesEstoque', [
+            'foreignKey' => 'produto_id'
+        ]);
     }
 
     /**

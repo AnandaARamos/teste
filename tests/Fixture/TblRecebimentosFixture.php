@@ -40,7 +40,7 @@ class TblRecebimentosFixture extends TestFixture
         $this->records = [
             [
                 'recebimento_id' => 1,
-                'recebimento_datahora' => '2019-02-28 01:19:11',
+                'recebimento_datahora' => '2019-02-28 08:22:14',
                 'recebimento_numero_nota' => 1
             ],
         ];

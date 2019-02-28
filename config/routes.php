@@ -50,6 +50,20 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
         'httpOnly' => true
     ]));
+    $routes->resources('TblProdutos');
+    $routes->fallbacks('InflectedRoute');
+    $routes->fallbacks('DashedRoute');
+    Router::extensions(['json', 'xml']);
+    $routes->connect('/tbl_produtos/saldo_estoque', ['controller' => 'TblProdutos', 'action' => 'saldo_estoque', 'isRest' => true]);
+    $routes->connect ( '/saldo_estoque', [
+        'controller' => 'TblProdutos',
+        'action' => 'saldoEstoque'
+    ] );
+
+    $routes->connect ( '/rastreamento_produto', [
+        'controller' => 'TblProdutos',
+        'action' => 'rastreamentoProduto'
+    ] );
 
     /**
      * Apply a middleware to the current route scope.
@@ -62,20 +76,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages',
-        'action' => 'display',
-        'home'
-    ]);
+    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
-    $routes->extensions(['json']);
-    $routes->resources ('Users');
-
-    $routes->connect ( '/saldo_estoque', [
-        'controller' => 'TblProdutos',
-        'action' => 'saldo_estoque'
-    ] );
-    $routes->fallbacks('InflectedRoute');
-    $routes->fallbacks('DashedRoute');
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */

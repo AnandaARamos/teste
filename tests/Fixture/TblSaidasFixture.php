@@ -40,7 +40,7 @@ class TblSaidasFixture extends TestFixture
         $this->records = [
             [
                 'saida_id' => 1,
-                'saida_datahora' => '2019-02-28 01:19:22',
+                'saida_datahora' => '2019-02-28 08:22:51',
                 'saida_numero_nota' => 1
             ],
         ];
