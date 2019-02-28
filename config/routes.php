@@ -60,10 +60,10 @@ Router::scope('/', function (RouteBuilder $routes) {
         'action' => 'saldoEstoque'
     ] );
 
-    $routes->connect ( '/rastreamento_produto', [
+    $routes->connect ( '/rastreamento_produto/*', [
         'controller' => 'TblProdutos',
-        'action' => 'rastreamentoProduto'
-    ] );
+        'action' => 'rastreamentoProduto',
+    ] ) ->setPass(['id', 'slug']);
 
     /**
      * Apply a middleware to the current route scope.

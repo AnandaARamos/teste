@@ -96,8 +96,6 @@ class TblProdutosController extends AppController
                     ->where(['produto_id' => $id])
                     ->first();
 
-                //$produto = $produto->toArray();
-
                 if($produto !== null)
                 {
 
@@ -124,7 +122,7 @@ class TblProdutosController extends AppController
                     $ajustes_saidas = $this->TblAjustesEstoque
                         ->find('all')
                         ->where(['produto_id' => $id, 'ajuste_tipo' => "S"])
-                        ->select(['codigo_movimentacao' => 'ajuste_id',
+                        ->select(['codigo_movimentacao' => 'ajuste_id', 
                             'data_hora_movimentacao' => 'ajuste_datahora', 'quantidade_movimentada' => 'ajuste_quantidade']);
 
 
@@ -146,13 +144,22 @@ class TblProdutosController extends AppController
                     $this->response->body($resultJ);
                     return $this->response;
                 } else {
-                    $this->Flash->error(__('404: Produto não encontrado.'));
+                    $resultJ = json_encode('404: Produto não encontrado.');
+                    $this->response->type('json');
+                    $this->response->body($resultJ);
+                    return $this->response;
                 }
             } else {
-                $this->Flash->error(__('400: Código Inválido.'));
+                $resultJ = json_encode('400: Código Inválido.');
+                $this->response->type('json');
+                $this->response->body($resultJ);
+                return $this->response;
             }
         } else {
-            $this->Flash->error(__('405: Requisição Inválida.'));
+            $resultJ = json_encode('405: Requisição Inválida.');
+            $this->response->type('json');
+            $this->response->body($resultJ);
+            return $this->response;
         }
     }
 }
