@@ -74,6 +74,9 @@ class TblAjustesEstoqueTable extends Table
             ->integer('ajuste_quantidade')
             ->allowEmptyString('ajuste_quantidade');
 
+        $validator
+            ->allowEmptyString('movimentacao');
+
         return $validator;
     }
 
