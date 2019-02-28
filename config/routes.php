@@ -62,8 +62,20 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'Pages',
+        'action' => 'display',
+        'home'
+    ]);
 
+    $routes->extensions(['json']);
+    $routes->resources ('Users');
+
+    $routes->connect ( '/saldo_estoque', [
+        'controller' => 'TblProdutos',
+        'action' => 'saldo_estoque'
+    ] );
+    $routes->fallbacks('InflectedRoute');
+    $routes->fallbacks('DashedRoute');
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
